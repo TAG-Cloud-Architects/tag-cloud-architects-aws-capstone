@@ -1,0 +1,70 @@
+name: Deploy Student Records App (AWS + Optional Azure Backup)
+
+on:
+push:
+branches: ["main"]
+
+env:
+AWS_REGION: us-east-1   # N. Virginia (REQUIRED)
+ASG_NAME: MY_AUTO_SCALING_GROUP
+S3_BUCKET: MY_S3_BUCKET
+
+# Optional multi-cloud (low-cost backup only)
+
+AZURE_STORAGE_ACCOUNT: MY_AZURE_STORAGE_ACCOUNT
+AZURE_CONTAINER: MY_CONTAINER_NAME
+
+permissions:
+contents: read
+
+jobs:
+deploy:
+runs-on: ubuntu-latest
+
+```
+steps:
+- name: Checkout source code
+  uses: actions/checkout@v4
+
+# AWS AUTH
+- name: Configure AWS credentials
+  uses: aws-actions/configure-aws-credentials@v1
+  with:
+    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    aws-region: ${{ env.AWS_REGION }}
+
+# PACKAGE
+- name: Package application
+  run: |
+    zip -r app.zip .
+
+# UPLOAD TO S3
+- name: Upload to S3
+  run: |
+    aws s3 cp app.zip s3://$S3_BUCKET/app.zip
+
+# OPTIONAL AZURE BACKUP
+- name: Upload to Azure Blob (Backup Only)
+  if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+  uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+- name: Upload artifact to Azure
+  if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+  run: |
+    az storage blob upload \
+      --account-name $AZURE_STORAGE_ACCOUNT \
+      --container-name $AZURE_CONTAINER \
+      --name app.zip \
+      --file app.zip \
+      --auth-mode login
+
+# DEPLOY
+- name: Trigger Auto Scaling Refresh
+  run: |
+    aws autoscaling start-instance-refresh \
+      --auto-scaling-group-name $ASG_NAME \
+      --preferences '{"MinHealthyPercentage": 50, "InstanceWarmup": 120}'
+```
