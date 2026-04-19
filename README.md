@@ -2,18 +2,25 @@
 ## Overview
 This project is a cloud architecture capstone focused on migrating a university student 
 ## Problem
-The original system used a single virtual machine for both the frontend and backend, whi
+The current system the university is using is University’s current student records web application is running on a single-tier, on-premise virtual machine, where both the frontend and backend are hosted together. This setup is causing:
+
+Performance issues (slow response times)
+Availability problems (downtime during peak admissions periods)
+Scalability limitations (cannot handle spikes in traffic)
+Security and reliability risks (single point of failure)
 ## Objective
-Design a proof of concept in AWS that improves performance, supports growth, increases av
-## Business Requirements- Deploy in US East (N. Virginia)- Use a load balancer as the single entry point- Separate web and database tiers- Support about 2,000 visitors per day- Scale automatically during traffic spikes- Maintain self-healing web infrastructure- Apply appropriate security controls- Keep costs low- Allow users to view, add, delete, and modify student records without noticeable delay
+Design and implement a proof of concept (POC) by migrating the application to the Amazon Web Services within 8 weeks, with goals to:
+
+Improve performance and availability during peak usage
+Enable scalability to handle fluctuating workloads
+Adopt a multi-tier, cloud-native architecture (separating frontend, backend, database)
+Leverage AWS best practices (e.g., load balancing, auto scaling, managed services)
+Enhance security and fault tolerance
+Optimize costs while supporting future growth
 ## Solution Summary
 The proposed design uses
 
- Application Load Balancer- Amazon EC2 Auto Scaling web tier- Amazon RDS for MySQL- Amazon CloudWatch- AWS Secrets Manager
-## Key Design Decisions- Two-tier architecture for better security and performance- High availability across multiple Availability Zones- Auto Scaling for dynamic capacity- Managed database service for reliability and simplicity- Secrets Manager to avoid storing database credentials on the web tier
-## Repository Contents- Problem statement- Requirements documents- Design and cost modeling- AWS pricing estimate- Final presentation
-## Team
-TAG Cloud Architects- Terica Shepard- Alexia Hinton- Godspower Oseratin Ogunseri
+
 
 ## Project Evidence
 This repository contains the team's class deliverables that document the full cloud arch
