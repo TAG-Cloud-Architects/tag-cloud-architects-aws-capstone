@@ -15,6 +15,15 @@ The proposed design uses
 ## Team
 TAG Cloud Architects- Terica Shepard- Alexia Hinton- Godspower Oseratin Ogunseri
 
+## Project Evidence
+This repository contains the team's class deliverables that document the full cloud arch
+1. Capstone problem statement
+2. Requirements gathering artifacts
+3. Final design and cost modeling document
+4. AWS Pricing Calculator estimate export
+5. Team presentation deck
+
+   Project Structure
 │
 ├── README.md
 ├── LICENSE
