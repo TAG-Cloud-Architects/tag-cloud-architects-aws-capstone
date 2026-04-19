@@ -27,9 +27,9 @@ AWS Secrets Manager – Securely stores and retrieves database credentials and o
 
 ## Team
 **TAG Cloud Architects**
-Terica Shepard
-Alexia Hinton
-Godspower Oseratin Ogunseri
+-Terica Shepard
+-Alexia Hinton
+-Godspower Oseratin Ogunseri
 
 ## Project Evidence
 This repository contains the team's class deliverables that document the full cloud arch
@@ -39,7 +39,7 @@ This repository contains the team's class deliverables that document the full cl
 4. AWS Pricing Calculator estimate export
 5. Team presentation deck
 
-   Project Structure
+  ## Project Structure
 │
 ├── README.md
 ├── LICENSE
