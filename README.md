@@ -18,9 +18,18 @@ Leverage AWS best practices (e.g., load balancing, auto scaling, managed service
 Enhance security and fault tolerance
 Optimize costs while supporting future growth
 ## Solution Summary
-The proposed design uses
+**Proposed AWS Architecture Components**
+Application Load Balancer – Distributes incoming traffic across multiple instances for high availability and fault tolerance
+Amazon EC2 Auto Scaling (Web/Application Tier) – Dynamically adjusts the number of instances based on demand
+Amazon RDS for MySQL (Database Tier) – Provides a managed, scalable, and highly available database solution
+Amazon CloudWatch – Monitors performance metrics, logs, and triggers alerts
+AWS Secrets Manager – Securely stores and retrieves database credentials and other sensitive data
 
-
+## Team
+**TAG Cloud Architects**
+Terica Shepard
+Alexia Hinton
+Godspower Oseratin Ogunseri
 
 ## Project Evidence
 This repository contains the team's class deliverables that document the full cloud arch
